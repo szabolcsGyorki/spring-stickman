@@ -1,6 +1,7 @@
 package com.codecool.mhmm.punkrock_stickman.controller;
 
 import com.codecool.mhmm.punkrock_stickman.Game;
+import com.codecool.mhmm.punkrock_stickman.service.JSONHandler;
 import com.codecool.mhmm.punkrock_stickman.service.Sound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,11 @@ public class StartGame {
     @Autowired
     private Game game;
 
+    @Autowired
+    private JSONHandler jsonHandler;
+
     @GetMapping("/send")
-    void initGame() {
+    public String initGame() {
         String name = "";
 
         if (!game.isDemoLoaded()) {
@@ -25,5 +29,7 @@ public class StartGame {
         }
 
         Sound.init();
+
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Game loaded");
     }
 }
