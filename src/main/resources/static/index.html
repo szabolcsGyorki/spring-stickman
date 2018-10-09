@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- p5js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+
+    <script src="js/display.js" defer></script>
+    <script src="js/imageHandler.js" defer></script>
+    <script src="js/keyHandlers.js" defer></script>
+    <script src="js/ajax.js" defer></script>
+    <script src="js/characterStats.js" defer></script>
+    <script src="js/inventory.js" defer></script>
+    <script src="js/buttonHandlers.js" defer></script>
+    <script src="js/defeat.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>Punk rock stickman</title>
+</head>
+<body>
+    <header id="pageHeader">
+        <h1>Punk Rock Stickman</h1>
+    </header>
+    <div class="game-container">
+        <div id="canvas"></div>
+        <div id="character_stats">
+            <ul class="list-group" id="character_stats_list">
+                <!--Character stats loaded from JS, example: -->
+                <!-- <li class="list-group-item">STR: 15</li> -->
+            </ul>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" id="inventory_button">
+                Inventory
+            </button>
+            <div id="response_field">
+
+            </div>
+        </div>
+    </div>
+    <div id="pageFooter"></div>
+
+    <!-- Inventory modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Inventory</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Inventory modal body -->
+                    <div id="inventory">
+                        <div class="row">
+
+                            <div class="col-4">
+                                <div class="list-group" id="list-tab" role="tablist">
+                                    <!--Inventory items loaded from JS, example: -->
+                                    <!-- <a class="list-group-item list-group-item-action active" id="list-itemname-list" data-toggle="list" href="#list-home" role="tab" aria-controls="itemname">ITEM_NAME</a> -->
+
+                                </div>
+                            </div>
+
+                            <div class="col-8">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <!--Inventory item descriptions loaded from JS, example: -->
+                                    <!-- <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-itemname-list">ITEM_DESCRIPTION</div> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="equip_button">Equip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
