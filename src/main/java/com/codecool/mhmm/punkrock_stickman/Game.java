@@ -9,11 +9,14 @@ import com.codecool.mhmm.punkrock_stickman.repository.LevelRepository;
 import com.codecool.mhmm.punkrock_stickman.repository.PlayerRepository;
 import com.codecool.mhmm.punkrock_stickman.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
 
 @Component
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Game {
 
     @Autowired
@@ -34,8 +37,7 @@ public class Game {
     private ItemHandler itemHandler;
     @Autowired
     private FightHandler fightHandler;
-    @Autowired
-    private InitDB init;
+
 
     private boolean initialized = false;
     private boolean demoLoaded = false;
@@ -44,15 +46,14 @@ public class Game {
     private Player player;
     private Level level;
 
-    public void initForDemo() {
-        init.init();
-        playerDAO.save(new Player(1, 1, "Zsolt"));
+    public void initForDemo(String name) {
+        playerDAO.save(new Player(1, 1, name));
         demoLoaded = true;
     }
 
     public void initGame(String name) {
         player = playerDAO.findByName(name);
-        level = (Level) levelDao.findAll().get(0);
+        level = levelDao.findAll().get(0);
         level.addContent(player);
         initialized = true;
     }
@@ -91,7 +92,7 @@ public class Game {
 
     public void nextLevel() {
         int next = level.getNumber() + 1;
-        level = (Level) levelDao.findAll().get(next);
+        level = levelDao.findAll().get(next);
         player.place(1, 1);
         level.addContent(player);
     }
