@@ -1,6 +1,7 @@
 package com.codecool.mhmm.punkrock_stickman.controller;
 
 import com.codecool.mhmm.punkrock_stickman.Game;
+import com.codecool.mhmm.punkrock_stickman.config.InitDB;
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.characters.Player;
 import com.codecool.mhmm.punkrock_stickman.model.map.Level;
 import com.codecool.mhmm.punkrock_stickman.service.JSONHandler;
@@ -11,8 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 public class StartGame {
+
+    @Autowired
+    private InitDB init;
 
     @Autowired
     private Game game;
@@ -25,11 +31,15 @@ public class StartGame {
 
     @GetMapping("/send")
     public String initGame() {
+        if (!init.isInitialized()) {
+            init.init();
+        }
+
         String name = "";
 
         if (!game.isDemoLoaded()) {
-            game.initForDemo();
-            name = "Zsolt";
+            name = String.valueOf(UUID.randomUUID());
+            game.initForDemo(name);
         }
         if (!game.isInitialized()) {
             game.initGame(name);
