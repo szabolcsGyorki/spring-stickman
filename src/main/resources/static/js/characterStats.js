@@ -16,7 +16,9 @@ function updateCharacterStats(response) {
         character_stats_list.appendChild(new_list_item);
     }
 
-    let newResponse = document.createElement("li");
-    newResponse.innerText = response;
-    responseList.insertBefore(newResponse, responseList.childNodes[0]);
+    if (response !== undefined) {
+        let newResponse = document.createElement("li");
+        newResponse.innerText = response;
+        responseList.insertBefore(newResponse, responseList.childNodes[0]);
+    }
 }

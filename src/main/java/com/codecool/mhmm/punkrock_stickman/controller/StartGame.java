@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
@@ -88,7 +86,7 @@ public class StartGame {
             moveHandler.moveLeft(player);
         }
 
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved to the " + move);
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved " + move);
     }
 
     @GetMapping("/fight")
