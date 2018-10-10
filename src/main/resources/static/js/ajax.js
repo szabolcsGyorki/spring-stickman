@@ -31,6 +31,12 @@ function requestEquipWeapon(item_name) {
     },"equipWeapon", item_name)
 }
 
+function restartGame() {
+    ajax_get('/restart', function (data) {
+        updateGame(data);
+    },"Restart", ":)")
+}
+
 function requestEquipArmor(item_name) {
     ajax_get('/equip', function (data) {
         updateGame(data);

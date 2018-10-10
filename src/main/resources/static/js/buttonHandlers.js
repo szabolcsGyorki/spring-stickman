@@ -11,3 +11,9 @@ equip_button.addEventListener("click", function () {
         requestPotion(item.name);
     }
 });
+
+let restart_button = document.getElementById("restart_button");
+
+restart_button.addEventListener("click", function () {
+    restartGame();
+});
