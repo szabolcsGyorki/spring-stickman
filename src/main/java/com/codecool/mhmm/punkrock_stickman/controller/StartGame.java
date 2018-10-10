@@ -15,25 +15,27 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 public class StartGame {
 
-    @Autowired
-    private InitDB init;
+    private final InitDB init;
+
+    private final Game game;
+
+    private final JSONHandler jsonHandler;
+
+    private final MoveHandler moveHandler;
 
     @Autowired
-    private Game game;
-
-    @Autowired
-    private JSONHandler jsonHandler;
-
-    @Autowired
-    private MoveHandler moveHandler;
+    public StartGame(InitDB init, Game game, JSONHandler jsonHandler, MoveHandler moveHandler) {
+        this.init = init;
+        this.game = game;
+        this.jsonHandler = jsonHandler;
+        this.moveHandler = moveHandler;
+    }
 
     @Autowired
     private FightHandler fightHandler;
@@ -84,7 +86,7 @@ public class StartGame {
             moveHandler.moveLeft(player);
         }
 
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved to the " + move);
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved " + move);
     }
 
     @GetMapping("/fight")
