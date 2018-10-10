@@ -1,5 +1,5 @@
 let character_stats_list = document.getElementById("character_stats_list");
-let response_field = document.getElementById("response_field");
+let responseList = document.querySelector("#responseList");
 let order_of_stats = ["Health", "Damage", "Strength", "Agility",  "Intellect"];
 
 function updateCharacterStats(response) {
@@ -16,5 +16,7 @@ function updateCharacterStats(response) {
         character_stats_list.appendChild(new_list_item);
     }
 
-    response_field.innerHTML = response;
+    let newResponse = document.createElement("li");
+    newResponse.innerText = response;
+    responseList.insertBefore(newResponse, responseList.childNodes[0]);
 }
