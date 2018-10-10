@@ -89,16 +89,21 @@ public class InitDB {
     private void initLoots() {
         Loot loot1 = new Loot(4, 1);
         Loot loot2 = new Loot(1, 4);
+        Loot loot3 = new Loot(3, 2);
 
-        loot1.add(itemsDAO.findByName("Colossus Blade"));
+        loot1.add(itemsDAO.findByName("Healing potion"));
         loot2.add(itemsDAO.findByName("Shadow Plate"));
+        loot3.add(itemsDAO.findByName("Kraken Shell"));
         itemHandler.setLootGold(loot1);
         itemHandler.setLootGold(loot2);
+        itemHandler.setLootGold(loot3);
         itemHandler.fillUpLoot(loot1);
         itemHandler.fillUpLoot(loot2);
+        itemHandler.fillUpLoot(loot3);
 
         itemsDAO.save(loot1);
         itemsDAO.save(loot2);
+        itemsDAO.save(loot3);
     }
 
     private void initLevels() {
