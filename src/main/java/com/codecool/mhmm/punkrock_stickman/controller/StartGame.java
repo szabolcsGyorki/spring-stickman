@@ -67,6 +67,12 @@ public class StartGame {
         return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Game loaded");
     }
 
+    @GetMapping("/restart")
+    public String restart(){
+        game.initGame(game.getPlayer().getName());
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Restart");
+    }
+
     @GetMapping("/move")
     public String move(@RequestHeader("move") String move) {
 

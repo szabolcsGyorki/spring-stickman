@@ -96,4 +96,5 @@ public class Game {
         player.place(1, 1);
         level.addContent(player);
     }
+
 }
