@@ -154,5 +154,11 @@ public class StartGame {
         return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(),"You picked up new loot.");
     }
 
+    @GetMapping("/won")
+    public String WinController(){
+        Sound.playWon();
+        return null;
+    }
+
 
 }
