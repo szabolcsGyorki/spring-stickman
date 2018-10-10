@@ -22,7 +22,7 @@ function ajax_get(url, callback, action, value) {
 function requestMove(action) {
     ajax_get('/move', function (data) {
         updateGame(data);
-    }, "map", action)
+    }, "move", action)
 }
 
 function requestEquipWeapon(item_name) {

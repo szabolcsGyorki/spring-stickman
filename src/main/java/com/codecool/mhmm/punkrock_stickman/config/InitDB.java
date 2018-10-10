@@ -22,6 +22,8 @@ import java.util.Random;
 @Service
 public class InitDB {
 
+    private boolean initialized = false;
+
     @Autowired
     private ItemRepository itemsDAO;
     @Autowired
@@ -43,6 +45,7 @@ public class InitDB {
         initLoots();
         initLevels();
         additionalInits();
+        initialized = true;
     }
 
     private void initArmors() {
@@ -111,5 +114,9 @@ public class InitDB {
 
     private void initPotions() {
         itemsDAO.save(new HealthPotion("Healing potion", 20, 20));
+    }
+
+    public boolean isInitialized() {
+        return initialized;
     }
 }
