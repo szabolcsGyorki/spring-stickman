@@ -5,6 +5,7 @@ import com.codecool.mhmm.punkrock_stickman.model.game_objects.GameObjectType;
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.Random;
 @Entity
 public class Loot extends Item {
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "loot_content")
     private List<Item> lootList = new ArrayList<>();
 

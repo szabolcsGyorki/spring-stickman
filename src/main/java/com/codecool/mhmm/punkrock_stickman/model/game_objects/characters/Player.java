@@ -28,9 +28,9 @@ public class Player extends Character {
     private List<Item> items = new ArrayList<>();
 
     public Player(int X, int Y, String name) {
-        super(X, Y, 300);
+        super(X, Y, 3000);
         this.type = GameObjectType.MAIN_CHARACTER;
-        strength = 30;
+        strength = 1;
         agility = 3;
         intelligence = 3;
         this.name = name;
@@ -96,7 +96,7 @@ public class Player extends Character {
     }
 
     public void removeItemFromInventory(Item item) {
-        items.remove(item);
+        items.remove(getItemById(item.getId()));
     }
 
     public Item getItemById(long id) {
