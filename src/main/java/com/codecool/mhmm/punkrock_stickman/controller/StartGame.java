@@ -84,7 +84,7 @@ public class StartGame {
             moveHandler.moveLeft(player);
         }
 
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Move to the " + move);
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved to the " + move);
     }
 
     @GetMapping("/fight")
