@@ -132,35 +132,4 @@ public class StartGame {
         return enemy;
     }
 
-    @GetMapping("/loot")
-    public String LootController(@RequestHeader("pickUpLoot") String actionRequired){
-        Player player = game.getPlayer();
-        Level level = game.getLevel();
-
-        if (actionRequired != null) {
-            Loot loot;
-            List<GameObject> map = level.getMap();
-            if (actionRequired.equals("down")) {
-                loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() + 1, map);
-            } else if (actionRequired.equals("up")) {
-                loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() - 1, map);
-            } else if (actionRequired.equals("right")) {
-                loot = (Loot) moveHandler.getDestination(player.getX() + 1, player.getY(), map);
-            } else {
-                loot = (Loot) moveHandler.getDestination(player.getX() - 1, player.getY(), map);
-            }
-            itemHandler.pickUpLoot(player, loot);
-            Sound.playLoot();
-            map.remove(loot);
-        }
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(),"You picked up new loot.");
-    }
-
-    @GetMapping("/won")
-    public String WinController(){
-        Sound.playWon();
-        return null;
-    }
-
-
 }
