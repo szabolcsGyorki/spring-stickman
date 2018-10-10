@@ -60,58 +60,58 @@ public class Sound {
     }
 
     private static void playSwordSwing() {
-        playSound("src/main/webapp/static/sounds/sword_swipe.wav");
+        playSound("src/main/resources/static/sounds/sword_swipe.wav");
     }
 
     private static void playPlayerDies() {
-        playSound("src/main/webapp/static/sounds/player_die.wav");
+        playSound("src/main/resources/static/sounds/player_die.wav");
     }
 
     private static void playSkeletonAttack() {
-        playSound("src/main/webapp/static/sounds/skeleton_attack.wav");
+        playSound("src/main/resources/static/sounds/skeleton_attack.wav");
     }
 
     private static void playSkeletonDeath() {
-        playSound("src/main/webapp/static/sounds/skeleton_die.wav");
+        playSound("src/main/resources/static/sounds/skeleton_die.wav");
     }
 
     private static void playSlimeAttack() {
-        playSound("src/main/webapp/static/sounds/slime_attack.wav");
+        playSound("src/main/resources/static/sounds/slime_attack.wav");
     }
 
     private static void playSlimeDeath() {
-        playSound("src/main/webapp/static/sounds/slime_die.wav");
+        playSound("src/main/resources/static/sounds/slime_die.wav");
     }
 
     private static void playOrcAttack() {
-        playSound("src/main/webapp/static/sounds/orc_attack.wav");
+        playSound("src/main/resources/static/sounds/orc_attack.wav");
     }
 
     private static void playOrcDeath() {
-        playSound("src/main/webapp/static/sounds/orc_die.wav");
+        playSound("src/main/resources/static/sounds/orc_die.wav");
     }
 
     private static void playDragonAttack() {
-        playSound("src/main/webapp/static/sounds/dragon_attack.wav");
+        playSound("src/main/resources/static/sounds/dragon_attack.wav");
     }
 
     private static void playDragonDeath() {
-        playSound("src/main/webapp/static/sounds/dragon_die.wav");
+        playSound("src/main/resources/static/sounds/dragon_die.wav");
     }
 
     static void playMiss() {
-        playSound("src/main/webapp/static/sounds/missed.wav");
+        playSound("src/main/resources/static/sounds/missed.wav");
     }
 
     public static void playGameOver() {
-        playSound("src/main/webapp/static/sounds/game_over.wav");
+        playSound("src/main/resources/static/sounds/game_over.wav");
     }
 
     public static void playLoot() {
-        playSound("src/main/webapp/static/sounds/loot.wav");
+        playSound("src/main/resources/static/sounds/loot.wav");
     }
 
     public static void playWon() {
-        playSound("src/main/webapp/static/sounds/game_won.wav");
+        playSound("src/main/resources/static/sounds/game_won.wav");
     }
 }
