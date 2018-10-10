@@ -2,6 +2,7 @@ package com.codecool.mhmm.punkrock_stickman.model.game_objects.items;
 
 
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.GameObjectType;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinTable;
