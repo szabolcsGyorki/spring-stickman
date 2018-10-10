@@ -89,47 +89,6 @@ public class StartGame {
         return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "Moved " + move);
     }
 
-    @GetMapping("/fight")
-    public String FightController(@RequestHeader("fight") String fight){
 
-        List<GameObject> map = game.getLevel().getMap();
-        Enemy enemy = getEnemy(fight);
-
-        Player player = game.getPlayer();
-        Level level = game.getLevel();
-
-        String response = "";
-        assert enemy != null;
-
-        response += fightHandler.playerHitsEnemy(player, enemy, healthHandler);
-
-        if (enemy.getHitPoint() > 0) {
-            response += fightHandler.enemyHitsPlayer(player, enemy, healthHandler);
-        } else {
-            response += fightHandler.enemyDies(level, itemHandler, map, enemy);
-        }
-
-        if (player.getHitPoint() <= 0) {
-            Sound.playDie(GameObjectType.MAIN_CHARACTER);
-            Sound.playGameOver();
-        }
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), response);
-    }
-
-    private Enemy getEnemy(String actionRequired) {
-        Enemy enemy = null;
-        if (actionRequired != null) {
-            if (actionRequired.equals("down")) {
-                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX(), game.getPlayer().getY() + 1, game.getLevel().getMap());
-            } else if (actionRequired.equals("up")) {
-                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX(), game.getPlayer().getY() - 1, game.getLevel().getMap());
-            } else if (actionRequired.equals("right")) {
-                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX() + 1, game.getPlayer().getY(), game.getLevel().getMap());
-            } else {
-                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX() - 1,game.getPlayer().getY(), game.getLevel().getMap());
-            }
-        }
-        return enemy;
-    }
 
 }
