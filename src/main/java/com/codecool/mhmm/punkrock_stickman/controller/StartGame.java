@@ -17,17 +17,21 @@ import java.util.UUID;
 @RestController
 public class StartGame {
 
-    @Autowired
-    private InitDB init;
+    private final InitDB init;
+
+    private final Game game;
+
+    private final JSONHandler jsonHandler;
+
+    private final MoveHandler moveHandler;
 
     @Autowired
-    private Game game;
-
-    @Autowired
-    private JSONHandler jsonHandler;
-
-    @Autowired
-    private MoveHandler moveHandler;
+    public StartGame(InitDB init, Game game, JSONHandler jsonHandler, MoveHandler moveHandler) {
+        this.init = init;
+        this.game = game;
+        this.jsonHandler = jsonHandler;
+        this.moveHandler = moveHandler;
+    }
 
     @GetMapping("/send")
     public String initGame() {
