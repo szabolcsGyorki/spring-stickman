@@ -74,6 +74,8 @@ body {
 }
 
 #character_stats {
+    position: relative;
+    overflow: hidden;
     box-sizing: border-box;
     border-left: 2px solid #111;
     float: left;
@@ -89,6 +91,25 @@ body {
 #inventory_button {
     display: table;
     margin: 20px auto;
+}
+
+#responseList {
+    position: relative;
+    padding: 0 5px;
+    box-sizing: border-box;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    border-top: 1px solid #575757;
+}
+
+#responseList li {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #797979;
+    font-size: 14px;
 }
 
 
