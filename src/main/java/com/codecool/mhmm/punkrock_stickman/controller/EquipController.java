@@ -23,7 +23,7 @@ public class EquipController {
     }
 
     @GetMapping("/equip")
-    public String equipItem(@RequestHeader(value = "equipWeapon", required=false) String weapon, @RequestHeader(value = "equipArmor", required=false) String armor) {
+    public String equipItem(@RequestHeader(value = "equipWeapon", required = false) String weapon, @RequestHeader(value = "equipArmor", required = false) String armor) {
         String itemName = "";
 
         if (weapon != null) {

@@ -18,7 +18,7 @@ public class FightHandler {
 
     private Random random = new Random();
 
-    int getPlayerDamage(Player player) {
+    private int getPlayerDamage(Player player) {
         int baseDamage = player.getStrength();
         Weapon weapon = player.getWeapon();
         if (weapon != null) {
@@ -33,12 +33,12 @@ public class FightHandler {
         return baseDamage;
     }
 
-    boolean characterHits(Character character) {
+    private boolean characterHits(Character character) {
         return random.nextInt(100) < character.getHitChance();
     }
 
-    boolean characterDodges(Character character) {
-        return random.nextInt(100) < character.getDodgeChance();
+    private boolean characterDodges(Character character) {
+        return random.nextInt(100) >= character.getDodgeChance();
     }
 
     public String playerHitsEnemy(Player player, Enemy enemy, HealthHandler healthHandler) {
@@ -47,7 +47,7 @@ public class FightHandler {
 
         if (characterHits(player)) {
             int playerDamage = getPlayerDamage(player);
-            if (!characterDodges(enemy)) {
+            if (characterDodges(enemy)) {
                 healthHandler.dealDamage(enemy, playerDamage);
                 response += "Your attack hits " + enemyType + " for " + playerDamage + " damage. ";
                 Sound.playAttack(GameObjectType.MAIN_CHARACTER);
@@ -67,7 +67,7 @@ public class FightHandler {
 
         if (characterHits(enemy)) {
             int enemyDamage = enemy.getDamage();
-            if (!characterDodges(player)) {
+            if (characterDodges(player)) {
                 healthHandler.dealDamage(player, enemyDamage);
                 response += enemyType + "'s attack hits your for " + enemyDamage + " damage.";
                 Sound.playAttack(enemyType);

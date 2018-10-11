@@ -3,7 +3,6 @@ package com.codecool.mhmm.punkrock_stickman.controller;
 import com.codecool.mhmm.punkrock_stickman.Game;
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.GameObject;
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.characters.Player;
-import com.codecool.mhmm.punkrock_stickman.model.game_objects.items.Item;
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.items.Loot;
 import com.codecool.mhmm.punkrock_stickman.model.map.Level;
 import com.codecool.mhmm.punkrock_stickman.service.ItemHandler;
@@ -34,26 +33,31 @@ public class LootController {
     }
 
     @GetMapping("/loot")
-    public String LootController(@RequestHeader("pickUpLoot") String actionRequired){
+    public String loot(@RequestHeader("pickUpLoot") String actionRequired) {
         Player player = game.getPlayer();
         Level level = game.getLevel();
 
         if (actionRequired != null) {
             Loot loot;
             List<GameObject> map = level.getMap();
-            if (actionRequired.equals("down")) {
-                loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() + 1, map);
-            } else if (actionRequired.equals("up")) {
-                loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() - 1, map);
-            } else if (actionRequired.equals("right")) {
-                loot = (Loot) moveHandler.getDestination(player.getX() + 1, player.getY(), map);
-            } else {
-                loot = (Loot) moveHandler.getDestination(player.getX() - 1, player.getY(), map);
+            switch (actionRequired) {
+                case "down":
+                    loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() + 1, map);
+                    break;
+                case "up":
+                    loot = (Loot) moveHandler.getDestination(player.getX(), player.getY() - 1, map);
+                    break;
+                case "right":
+                    loot = (Loot) moveHandler.getDestination(player.getX() + 1, player.getY(), map);
+                    break;
+                default:
+                    loot = (Loot) moveHandler.getDestination(player.getX() - 1, player.getY(), map);
+                    break;
             }
             itemHandler.pickUpLoot(player, loot);
             Sound.playLoot();
             map.remove(loot);
         }
-        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(),"You picked up new loot.");
+        return jsonHandler.gameStateToJson(game.getPlayer(), game.getLevel(), "You picked up new loot.");
     }
 }

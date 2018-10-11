@@ -24,18 +24,22 @@ public class InitDB {
 
     private boolean initialized = false;
 
+    private final ItemRepository itemsDAO;
+    private final LevelRepository levelDAO;
+    private final EnemyRepository enemyDAO;
+    private final LevelGenerator levelGenerator;
+    private final HealthHandler healthHandler;
+    private final ItemHandler itemHandler;
+
     @Autowired
-    private ItemRepository itemsDAO;
-    @Autowired
-    private LevelRepository levelDAO;
-    @Autowired
-    private EnemyRepository enemyDAO;
-    @Autowired
-    private LevelGenerator levelGenerator;
-    @Autowired
-    private HealthHandler healthHandler;
-    @Autowired
-    private ItemHandler itemHandler;
+    public InitDB(ItemRepository itemsDAO, LevelRepository levelDAO, EnemyRepository enemyDAO, LevelGenerator levelGenerator, HealthHandler healthHandler, ItemHandler itemHandler) {
+        this.itemsDAO = itemsDAO;
+        this.levelDAO = levelDAO;
+        this.enemyDAO = enemyDAO;
+        this.levelGenerator = levelGenerator;
+        this.healthHandler = healthHandler;
+        this.itemHandler = itemHandler;
+    }
 
     public void init() {
         initPotions();

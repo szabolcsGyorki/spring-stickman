@@ -13,7 +13,7 @@ public class HealthPotion extends Item {
     public HealthPotion(String name, int value, int ammount) {
         super(name, value);
         this.ammount = ammount;
-        this.type = GameObjectType.HEALTHPOTION;
+        this.type = GameObjectType.HEALTH_POTION;
     }
 
     public HealthPotion() {

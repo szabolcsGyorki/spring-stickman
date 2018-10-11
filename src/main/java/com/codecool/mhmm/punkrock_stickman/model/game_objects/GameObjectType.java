@@ -11,5 +11,5 @@ public enum GameObjectType {
     ARMOR,
     WEAPON,
     MAIN_CHARACTER,
-    HEALTHPOTION
+    HEALTH_POTION
 }
