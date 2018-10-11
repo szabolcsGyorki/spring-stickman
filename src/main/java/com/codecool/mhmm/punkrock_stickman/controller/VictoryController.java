@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VictoryController {
 
     @GetMapping("/won")
-    public String WinController(){
+    public String victory() {
         Sound.playWon();
         return null;
     }

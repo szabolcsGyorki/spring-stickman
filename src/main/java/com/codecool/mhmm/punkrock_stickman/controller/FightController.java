@@ -34,7 +34,7 @@ public class FightController {
     }
 
     @GetMapping("/fight")
-    public String FightController(@RequestHeader("fight") String fight){
+    public String fight(@RequestHeader("fight") String fight) {
 
         List<GameObject> map = game.getLevel().getMap();
         Enemy enemy = getEnemy(fight);
@@ -62,16 +62,20 @@ public class FightController {
 
     private Enemy getEnemy(String actionRequired) {
         Enemy enemy = null;
-        if (actionRequired != null) {
-            if (actionRequired.equals("down")) {
+        switch (actionRequired) {
+            case "down":
                 enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX(), game.getPlayer().getY() + 1, game.getLevel().getMap());
-            } else if (actionRequired.equals("up")) {
+                break;
+            case "up":
                 enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX(), game.getPlayer().getY() - 1, game.getLevel().getMap());
-            } else if (actionRequired.equals("right")) {
+                break;
+            case "right":
                 enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX() + 1, game.getPlayer().getY(), game.getLevel().getMap());
-            } else {
-                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX() - 1,game.getPlayer().getY(), game.getLevel().getMap());
-            }
+                break;
+            case "left":
+                enemy = (Enemy) moveHandler.getDestination(game.getPlayer().getX() - 1, game.getPlayer().getY(), game.getLevel().getMap());
+                break;
         }
         return enemy;
-    }}
+    }
+}

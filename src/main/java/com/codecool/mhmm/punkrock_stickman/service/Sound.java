@@ -46,7 +46,7 @@ public class Sound {
             e.printStackTrace();
         }
 
-        // create an audiostream from the inputstream
+        // create an audio-stream from the input-stream
         AudioStream audioStream = null;
         try {
             assert in != null;
@@ -55,7 +55,7 @@ public class Sound {
             e.printStackTrace();
         }
 
-        // play the audio clip with the audioplayer class
+        // play the audio clip with the audio player class
         AudioPlayer.player.start(audioStream);
     }
 

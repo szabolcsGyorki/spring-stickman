@@ -1,6 +1,5 @@
 package com.codecool.mhmm.punkrock_stickman;
 
-import com.codecool.mhmm.punkrock_stickman.config.InitDB;
 import com.codecool.mhmm.punkrock_stickman.model.game_objects.characters.Player;
 import com.codecool.mhmm.punkrock_stickman.model.map.Level;
 import com.codecool.mhmm.punkrock_stickman.repository.EnemyRepository;
@@ -19,25 +18,8 @@ import javax.servlet.http.HttpSession;
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Game {
 
-    @Autowired
-    private ItemRepository itemsDAO;
-    @Autowired
-    private EnemyRepository enemyDao;
-    @Autowired
-    private LevelRepository levelDao;
-    @Autowired
-    private PlayerRepository playerDAO;
-    @Autowired
-    private HealthHandler healthHandler;
-    @Autowired
-    private LevelGenerator levelGenerator;
-    @Autowired
-    private MoveHandler moveHandler;
-    @Autowired
-    private ItemHandler itemHandler;
-    @Autowired
-    private FightHandler fightHandler;
-
+    private final LevelRepository levelDao;
+    private final PlayerRepository playerDAO;
 
     private boolean initialized = false;
     private boolean demoLoaded = false;
@@ -45,6 +27,12 @@ public class Game {
     //GUEST TRIAL STUFF
     private Player player;
     private Level level;
+
+    @Autowired
+    public Game(LevelRepository levelDao, PlayerRepository playerDAO) {
+        this.levelDao = levelDao;
+        this.playerDAO = playerDAO;
+    }
 
     public void initForDemo(String name) {
         playerDAO.save(new Player(1, 1, name));

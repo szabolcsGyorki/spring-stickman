@@ -19,7 +19,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
         List<Item> items = new ArrayList<>(findByType(GameObjectType.WEAPON));
         items.addAll(findByType(GameObjectType.ARMOR));
-        items.addAll(findByType(GameObjectType.HEALTHPOTION));
+        items.addAll(findByType(GameObjectType.HEALTH_POTION));
 
         int id = new Random().nextInt(items.size());
         return items.get(id);

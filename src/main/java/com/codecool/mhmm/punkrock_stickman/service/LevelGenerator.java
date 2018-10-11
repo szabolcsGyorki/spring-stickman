@@ -16,13 +16,16 @@ import static com.codecool.mhmm.punkrock_stickman.model.game_objects.GameObjectT
 @Service
 public class LevelGenerator {
 
-    @Autowired
-    private EnemyRepository enemyDAO;
+    private final EnemyRepository enemyDAO;
+    private final ItemRepository itemsDAO;
+    private final GameObjectRepository gameObjectRepository;
 
     @Autowired
-    private ItemRepository itemsDAO;
-    @Autowired
-    private GameObjectRepository gameObjectRepository;
+    public LevelGenerator(EnemyRepository enemyDAO, ItemRepository itemsDAO, GameObjectRepository gameObjectRepository) {
+        this.enemyDAO = enemyDAO;
+        this.itemsDAO = itemsDAO;
+        this.gameObjectRepository = gameObjectRepository;
+    }
 
     public Level levelOne() {
         Level levelOne = generateBase(10, 10, WALL, FLOOR);

@@ -16,11 +16,15 @@ import java.util.stream.Stream;
 @Service
 public class ItemHandler {
 
-    @Autowired
-    private ItemRepository itemsDAO;
-    @Autowired
-    private HealthHandler healthHandler;
+    private final ItemRepository itemsDAO;
+    private final HealthHandler healthHandler;
     private Random random = new Random();
+
+    @Autowired
+    public ItemHandler(ItemRepository itemsDAO, HealthHandler healthHandler) {
+        this.itemsDAO = itemsDAO;
+        this.healthHandler = healthHandler;
+    }
 
     void assignToPlayer(Player player, Item item) {
         player.addItemToInventory(item);

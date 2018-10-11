@@ -67,7 +67,7 @@ public class JSONHandler {
                 jsonItem.put("maxDamage", ((Weapon) item).getMaxDamage());
                 jsonItem.put("minDamage", ((Weapon) item).getMinDamage());
                 jsonItem.put("type", "weapon");
-            } else if (item instanceof Armor){
+            } else if (item instanceof Armor) {
                 jsonItem.put("healthIncrease", ((Armor) item).getHealthIncrease());
                 jsonItem.put("type", "armor");
             } else {
